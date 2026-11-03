@@ -8,6 +8,8 @@ if [ ! -f /etc/stunnel/stunnel.pem ]; then
     chmod 600 /etc/stunnel/stunnel.pem
 fi
 
+# Simulan ang SSH Server
 /usr/sbin/sshd
 
+# Simulan ang Stunnel sa port 8080 para sumunod sa Cloud Run requirement
 exec stunnel /etc/stunnel/stunnel.conf
