@@ -13,10 +13,12 @@ RUN ssh-keygen -A && \
 COPY banner.txt /etc/banner.txt
 RUN echo "Banner /etc/banner.txt" >> /etc/ssh/sshd_config
 
+# ✅ I‑copy ang stunnel config
+COPY stunnel.conf /etc/stunnel/stunnel.conf
+
 RUN adduser -D -s /bin/bash con && \
     echo "con:gcp" | chpasswd
 
-# I-expose ang port 8080 para sa Cloud Run
 EXPOSE 8080
 
 COPY entrypoint.sh /entrypoint.sh
